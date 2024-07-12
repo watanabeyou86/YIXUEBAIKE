@@ -12,6 +12,7 @@ client = MongoClient(MONGO_URI)
 db = client[DB_NAME]
 collection = db[COLLECTION_NAME]
 
+
 # 目标网站的URL
 URL = "https://www.yixue.com/%E8%A7%92%E8%B4%A8%E5%B1%82"
 
@@ -23,15 +24,15 @@ soup = BeautifulSoup(response.text, 'html.parser')
 
 # 提取内容
 # 一，提取标题
-title = soup.find('span',class_='mw-page-title-main').get_text(strip=True)
+title = soup.find('span', class_='mw-page-title-main').get_text(strip=True)
 # 二，提取内容
-content = soup.find('div',class_='mw-body').get_text(strip=True)
+content = soup.find('div', class_='mw-body').get_text(strip=True)
 # 三，提取关联词
 keyword_list = soup.select('.mw-parser-output > p > a')
-#关联词以数组形式储存，创建空的数组对象
+# 关联词以数组形式储存，创建空的数组对象
 associated_word = []
-#遍历写入关联词
-for a in  keyword_list:
+# 遍历写入关联词
+for a in keyword_list:
     keyword = a.string
     associated_word.append(keyword)
 
@@ -40,7 +41,8 @@ temp_date = {
     'name': title,
     'content': content,
     'associated_word': associated_word,
-}
+    }
+
 collection.insert_one(temp_date)
 
 # 关闭数据库连接

@@ -1,0 +1,26 @@
+yixueCrawler
+===========================
+
+###########环境依赖
+PyCharm Community Edition 2024.1.4
+
+###########部署步骤
+1. 添加系统环境变量
+from pymongo import MongoClient
+import requests
+from bs4 import BeautifulSoup
+
+2. Mongo Plugin  //安装数据库插件
+
+
+
+###########目录结构描述
+├── Readme.md                   // help
+├── .venv                       // 程序相关依赖
+├── test                        // 单页面爬虫
+├── startup                     // 主程序
+
+
+
+###########V1.0.0 版本内容更新
+1. 新功能     深度爬虫
